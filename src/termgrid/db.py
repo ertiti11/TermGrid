@@ -15,6 +15,8 @@ class Server:
     os: str
     tags: str = ""
     notes: str = ""
+    group: str = ""  # <-- Nuevo campo
+
 
 def connect() -> sqlite3.Connection:
     db = get_db_path()
@@ -30,7 +32,8 @@ def connect() -> sqlite3.Connection:
         port INTEGER NOT NULL,
         os TEXT NOT NULL,
         tags TEXT DEFAULT '',
-        notes TEXT DEFAULT ''
+        notes TEXT DEFAULT '',
+        "group" TEXT DEFAULT '' 
     );
     """)
     return conn
