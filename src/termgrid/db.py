@@ -52,6 +52,9 @@ def list_servers(conn, q: str = "", order: str = "name") -> List[Server]:
         rows = conn.execute(f"SELECT * FROM servers ORDER BY {order_by} COLLATE NOCASE").fetchall()
     return [Server(**dict(r)) for r in rows]
 
+
+
+
 def add(conn, s: Server) -> int:
     cur = conn.execute("""
         INSERT INTO servers(name,host,protocol,username,port,os,tags,notes)
@@ -71,3 +74,10 @@ def update(conn, s: Server) -> None:
 def delete(conn, sid: int) -> None:
     conn.execute("DELETE FROM servers WHERE id=?", (sid,))
     conn.commit()
+
+
+
+
+
+
+
